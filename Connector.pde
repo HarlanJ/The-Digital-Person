@@ -38,12 +38,13 @@ class Connector{
        }
      }
      temp /= 2;
-     similarities += temp;
+     similarities += temp + 1;
      
      
      //similarites should max at 8
      
      thick = int(sq(similarities));
+     
      colorMode(HSB, 255, 100, 100);
      col = color(random(255), (50 / 8) * thick, 50);
   }
@@ -54,5 +55,10 @@ class Connector{
     stroke(col);
     line(beg.pos.x, beg.pos.y, beg.pos.z, end.pos.x, end.pos.y, end.pos.z);
     popStyle();
+  }
+  
+  void update(){
+    beg.drift();
+    end.drift();
   }
 }
